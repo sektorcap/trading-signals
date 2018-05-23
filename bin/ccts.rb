@@ -19,6 +19,7 @@ trap_kill
 options = OptionParser.parse(ARGV)
 
 while true
+  puts "Here"
   begin
     options.stocks_files.each do |f|
       logger.info "Analyzing #{f}..."
@@ -28,7 +29,9 @@ while true
   rescue Exception => e
      logger.error e.inspect
   end
-  sleep(60*60)
+  sleep(60)
+  puts "There"
+
 end
 
 logger.info 'Finish'
