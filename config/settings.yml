@@ -1,5 +1,5 @@
 log:
-  file: /app/log/ccts.log
+  #file: log/ccts.log
   level: debug
 
 alphavantage:
