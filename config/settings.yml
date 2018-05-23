@@ -1,5 +1,5 @@
 log:
-  file: /home/sektor/projects/stocks/ruby/log/ccts.log
+  file: ../log/ccts.log
   level: debug
 
 alphavantage:
