@@ -20,17 +20,20 @@ options = OptionParser.parse(ARGV)
 
 while true
   puts "Here"
+  STDOUT.flush
   begin
     options.stocks_files.each do |f|
       logger.info "Analyzing #{f}..."
       ret = analyze f
       puts ret.inspect
+      STDOUT.flush
     end
   rescue Exception => e
      logger.error e.inspect
   end
   sleep(60)
   puts "There"
+  STDOUT.flush
 
 end
 
