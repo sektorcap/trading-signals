@@ -1,1 +1,1 @@
-worker: bundle exec bin/ccts
+worker: bundle exec bin/ccts.rb
