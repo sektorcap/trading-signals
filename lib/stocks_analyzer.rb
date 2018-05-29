@@ -6,7 +6,7 @@ include Alphavantage
 include Logging
 
 module StocksAnalizer
-  CONSTANT_SLEEP_SECS = 3
+  CONSTANT_SLEEP_SECS = 5
   def analyze file
     stocks = YAML.load_file(File.join(File.dirname(__FILE__), '..', 'config', file))
     ret = []
