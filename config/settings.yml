@@ -3,7 +3,6 @@ log:
   level: debug
 
 alphavantage:
-  key: LWPDL2XAB57FU3M7
   verbose: true
 
 stocks:

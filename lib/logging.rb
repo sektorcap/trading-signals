@@ -12,7 +12,12 @@ module Logging
 
     config = YAML.load_file(File.join(File.dirname(__FILE__), '..', 'config', 'settings.yml'))
 
-    file  = config['log']['file']  rescue STDOUT
+    if config['log']['file'].nil?
+      file = STDOUT
+      file.sync = true
+    else
+      file = config['log']['file']
+    end
     level = Logger.const_get config['log']['level'].upcase rescue Logger::INFO
 
     @logger = Logger.new(file)

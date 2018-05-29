@@ -7,35 +7,36 @@ require 'logging'
 require 'signal_catching'
 require 'mail'
 require 'stocks_analyzer'
+require 'send_mail'
 
 include Logging
 include StocksAnalizer
 include Signal
+include SendMail
 
 logger.info 'Start'
+
 trap_ctrl_c
 trap_kill
 
 options = OptionParser.parse(ARGV)
 
-while true
-  puts "Here"
-  STDOUT.flush
-  begin
-    options.stocks_files.each do |f|
-      logger.info "Analyzing #{f}..."
-      ret = analyze f
-      puts ret.inspect
-      STDOUT.flush
-    end
-  rescue Exception => e
-     logger.error e.inspect
+begin
+  options.stocks_files.each do |f|
+    logger.info "Analyzing #{f}..."
+    ret = analyze f
+    puts ret.inspect
+    STDOUT.flush
+    SendMail.send_mail SendMail.build_signals_body(ret), options[:mail_to]
   end
-  sleep(60)
-  puts "There"
-  STDOUT.flush
-
+rescue Exception => e
+   logger.error e.inspect
+   body  = "Exception\n"
+   body += e.inspect
+   SendMail.send_mail body, options[:mail_to]
 end
+
+# SendMail.send_mail ret, options[:mail_to]
 
 logger.info 'Finish'
 

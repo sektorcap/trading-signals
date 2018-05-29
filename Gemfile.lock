@@ -10,6 +10,10 @@ GEM
       httparty (= 0.15.6)
       humanize (= 1.7.0)
     concurrent-ruby (1.0.5)
+    domain_name (0.5.20180417)
+      unf (>= 0.0.5, < 1.0.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     httparty (0.15.6)
       multi_xml (>= 0.5.2)
     humanize (1.7.0)
@@ -17,12 +21,25 @@ GEM
       concurrent-ruby (~> 1.0)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
+    mailgun-ruby (1.1.9)
+      rest-client (~> 2.0)
+    mime-types (3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2016.0521)
     mini_mime (1.0.0)
     minitest (5.11.3)
     multi_xml (0.6.0)
+    netrc (0.11.0)
+    rest-client (2.0.2)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     thread_safe (0.3.6)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.5)
 
 PLATFORMS
   ruby
@@ -31,6 +48,7 @@ DEPENDENCIES
   activesupport
   alphavantagerb
   mail
+  mailgun-ruby
 
 RUBY VERSION
    ruby 2.3.7p456

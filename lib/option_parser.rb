@@ -5,7 +5,7 @@ class OptionParser
 
   def self.parse(args)
     options = OpenStruct.new
-    options.mail_to = ['ettore.caprella@gmail.com']
+    options.mail_to = ['ettore.caprella@gmail.com', 'paolo.cocito@gmail.com']
     options.stocks_files = ['ftse_mib.yml']
 
     opt_parser = OptionParser.new do |opts|
