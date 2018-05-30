@@ -6,13 +6,11 @@ include Alphavantage
 include Logging
 
 module StocksAnalizer
-  CONSTANT_SLEEP_SECS = 5
   def analyze file
     stocks = YAML.load_file(File.join(File.dirname(__FILE__), '..', 'config', file))
     ret = []
     stocks.each do |symbol, name|
-      stock = alphavantage.stock symbol: symbol
-      timeseries = stock.timeseries outputsize: "full"
+      timeseries = daily_stock symbol
 
       s1, options1 = signal_5_down timeseries.close[0..4]
       s2, options2 = one_year_min timeseries.close
@@ -32,8 +30,6 @@ module StocksAnalizer
           (options2 if s2)
         ].compact
       }
-
-      sleep(CONSTANT_SLEEP_SECS)
     end
     ret
   end
@@ -45,11 +41,12 @@ module StocksAnalizer
     return true, options
   end
 
+  PERCENTAGE_MIN_THRESHOLD = 0.95
   def one_year_min ts
     options = {}
     min_entry = ts[0..280].min{|x,y| x[1].to_f <=> y[1].to_f}
     options[:min_entry] = min_entry
-    if (ts[0][1].to_f*0.90 <= min_entry[1].to_f)
+    if (ts[0][1].to_f*PERCENTAGE_MIN_THRESHOLD <= min_entry[1].to_f)
       options[:message] = "Nei pressi del minimo dell'ultimo anno (#{min_entry})"
       return true, options
     else

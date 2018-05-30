@@ -1,7 +1,7 @@
 require 'mailgun'
 
 module SendMail
-  def send_mail body, dest
+  def send_mail body
     mg_client = Mailgun::Client.new ENV['MAILGUN_KEY']
 
 
@@ -18,7 +18,7 @@ module SendMail
     msg = ""
     signals.select{|x| x[:is_signaled]}.each do |s|
       msg += "#{s[:name]} #{s[:symbol]}: #{s[:last_time]}, #{s[:last_close]}\n"
-      s[:signals].each {|m| msg += "  - #{m[:message]}"}
+      s[:signals].each {|m| msg += "  - #{m[:message]}\n"}
     end
     msg
   end

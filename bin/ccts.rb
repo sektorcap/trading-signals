@@ -25,19 +25,14 @@ begin
   options.stocks_files.each do |f|
     logger.info "Analyzing #{f}..."
     ret = analyze f
-    puts ret.inspect
     STDOUT.flush
-    SendMail.send_mail SendMail.build_signals_body(ret), options[:mail_to]
+    SendMail.send_mail SendMail.build_signals_body(ret)
   end
 rescue Exception => e
    logger.error e.inspect
    body  = "Exception\n"
    body += e.inspect
-   SendMail.send_mail body, options[:mail_to]
+   SendMail.send_mail body
 end
 
-# SendMail.send_mail ret, options[:mail_to]
-
 logger.info 'Finish'
-
-#https://devcenter.heroku.com/articles/getting-started-with-ruby#introduction
