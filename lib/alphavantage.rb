@@ -38,7 +38,7 @@ module Alphavantage
       begin
         stock = alphavantage.stock symbol: symbol
         return stock.timeseries outputsize: "full"
-      rescue (Alphavantage::Error ex)
+      rescue Alphavantage::Error => ex
         attempts += 1
         logger.warn "Attempts #{attempts} failed for #{symbol}"
         raise ex if attempts == alphavantage_config[:retry]
