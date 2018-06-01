@@ -26,6 +26,8 @@ module StocksAnalizer
         name: name,
         last_time: timeseries.close[0][0],
         last_close: timeseries.close[0][1],
+        min_close: min_close(timeseries.close),
+        max_close: max_close(timeseries.close),
         is_signaled: s1 | s2 | s3,
         signals: [
           (options1 if s1),
@@ -37,10 +39,18 @@ module StocksAnalizer
     ret
   end
 
+  def min_close ts
+    ts[0..280].min{|x,y| x[1].to_f <=> y[1].to_f}
+  end
+  def max_close ts
+    ts[0..280].max{|x,y| x[1].to_f <=> y[1].to_f}
+  end
+
   def signal_5_down ts
     options = {}
     (0..3).each {|x| return false, options if ts[x][1] >= ts[x+1][1]}
     options[:message] = "Sceso 5 volte di fila (#{ts[0..4].map{|x| x[1]}.join(", ")})"
+    options[:action] = "compra"
     return true, options
   end
 
@@ -51,6 +61,7 @@ module StocksAnalizer
     options[:min_entry] = min_entry
     if (ts[0][1].to_f*PERCENTAGE_MIN_THRESHOLD <= min_entry[1].to_f)
       options[:message] = "Nei pressi del minimo dell'ultimo anno (#{min_entry})"
+      options[:action] = "compra"
       return true, options
     else
       return false, options
@@ -64,6 +75,7 @@ module StocksAnalizer
     options[:max_entry] = max_entry
     if (ts[0][1].to_f >= max_entry[1].to_f*PERCENTAGE_MAX_THRESHOLD)
       options[:message] = "Nei pressi del massimo dell'ultimo anno (#{max_entry})"
+      options[:action] = "vendi"
       return true, options
     else
       return false, options
