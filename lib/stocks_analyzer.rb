@@ -9,21 +9,21 @@ module StocksAnalizer
   def analyze file
     stocks = YAML.load_file(File.join(File.dirname(__FILE__), '..', 'config', file))
     ret = []
-    stocks.each do |symbol, name|
+    stocks.each do |symbol, data|
       timeseries = daily_stock symbol
 
       s1, options1 = signal_5_down timeseries.close[0..4]
       s2, options2 = one_year_min timeseries.close
       s3, options3 = one_year_max timeseries.close
 
-      logger.info "#{name} (#{symbol}): #{timeseries.close[0]}"
+      logger.info "#{data["name"]} (#{symbol}): #{timeseries.close[0]}"
       logger.info "  - #{options1[:message]}" if s1
       logger.info "  - #{options2[:message]}" if s2
       logger.info "  - #{options3[:message]}" if s3
 
       ret << {
         symbol: symbol,
-        name: name,
+        name: data["name"],
         last_time: timeseries.close[0][0],
         last_close: timeseries.close[0][1],
         min_close: min_close(timeseries.close),

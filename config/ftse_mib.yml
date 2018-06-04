@@ -1,40 +1,123 @@
-"A2A.MI": "A2A S.p.A."
-"ATL.MI": "Atlantia S.p.A."
-"AZM.MI": "Azimut Holding S.p.A."
-"BGN.MI": "Banca Generali S.p.A."
-"BMED.MI": "Banca Mediolanum S.p.A."
-"BAMI.MI": "Banco BPM S.p.A"
-"BPE.MI": "BPER Banca S.p.A."
-"BRE.MI": "Brembo S.p.A."
-"BZU.MI": "Buzzi Unicem S.p.A."
-"CPR.MI": "Campari - Milano S.p.A."
-"CNHI.MI": "CNH Industrial N.V."
-"ENEL.MI": "Enel S.p.A."
-"ENI.MI": "Eni S.p.A."
-"EXO.MI": "Exor N.V."
-"RACE.MI": "Ferrari N.V."
-"FCA.MI": "Fiat Chrysler Automobiles N.V."
-"FBK.MI": "FinecoBank S.p.A."
-"G.MI": "Generali S.p.A."
-"ISP.MI": "Intesa Sanpaolo S.p.A."
-"IG.MI": "Italgas S.p.A."
-"LDO.MI": "Leonardo S.p.A."
-"LUX.MI": "Luxottica S.p.A."
-"MS.MI": "Mediaset S.p.A."
-"MB.MI": "Mediobanca S.p.A."
-"MONC.MI": "Moncler S.p.A."
-"PIRC.MI": "Pirelli & C. S.p.A.[11]"
-"PST.MI": "Poste italiane S.p.A."
-"PRY.MI": "Prysmian S.p.A."
-"REC.MI": "Recordati S.p.A."
-"SPM.MI": "Saipem S.p.A."
-"SFER.MI": "Salvatore Ferragamo S.p.A."
-"SRG.MI": "Snam S.p.A."
-"STM.MI": "STMicroelectronics N.V."
-"TIT.MI": "Telecom Italia S.p.A."
-"TEN.MI": "Tenaris S.A."
-"TRN.MI": "Terna - Rete Elettrica Nazionale S.p.A."
-"UBI.MI": "UBI Banca S.p.A."
-"UCG.MI": "UniCredit S.p.A.[12]"
-"UNI.MI": "Unipol S.p.A."
-"US.MI": "UnipolSai Assicurazioni S.p.A."
+"A2A.MI":
+  name: "A2A S.p.A."
+  dividend: 0.0578
+"ATL.MI":
+  name: "Atlantia S.p.A."
+  dividend: 1.22
+"AZM.MI":
+  name: "Azimut Holding S.p.A."
+  dividend: 2
+"BGN.MI":
+  name: "Banca Generali S.p.A."
+  dividend: 1.25
+"BMED.MI":
+  name: "Banca Mediolanum S.p.A."
+  dividend: 0.4
+"BAMI.MI":
+  name: "Banco BPM S.p.A"
+  dividend: 0
+"BPE.MI":
+  name: "BPER Banca S.p.A."
+  dividend: 0.11
+"BRE.MI":
+  name: "Brembo S.p.A."
+  dividend: 0.22
+"BZU.MI":
+  name: "Buzzi Unicem S.p.A."
+  dividend: 0.12
+"CPR.MI":
+  name: "Campari - Milano S.p.A."
+  dividend: 0.05
+"CNHI.MI":
+  name: "CNH Industrial N.V."
+  dividend: 0.14
+"ENEL.MI":
+  name: "Enel S.p.A."
+  dividend: 0.237
+"ENI.MI":
+  name: "Eni S.p.A."
+  dividend: 0.8
+"EXO.MI":
+  name: "Exor N.V."
+  dividend: 0.35
+"RACE.MI":
+  name: "Ferrari N.V."
+  dividend: 0.71
+"FCA.MI":
+  name: "Fiat Chrysler Automobiles N.V."
+  dividend: 0
+"FBK.MI":
+  name: "FinecoBank S.p.A."
+  dividend: 0.285
+"G.MI":
+  name: "Generali S.p.A."
+  dividend: 0.85
+"ISP.MI":
+  name: "Intesa Sanpaolo S.p.A."
+  dividend: 0.203
+"IG.MI":
+  name: "Italgas S.p.A."
+  dividend: 0.208
+"LDO.MI":
+  name: "Leonardo S.p.A."
+  dividend: 0.14
+"LUX.MI":
+  name: "Luxottica S.p.A."
+  dividend: 1.01
+"MS.MI":
+  name: "Mediaset S.p.A."
+  dividend: 0
+"MB.MI":
+  name: "Mediobanca S.p.A."
+  dividend: 0.37
+"MONC.MI":
+  name: "Moncler S.p.A."
+  dividend: 0.28
+"PIRC.MI":
+  name: "Pirelli & C. S.p.A.[11]"
+  dividend: 0
+"PST.MI":
+  name: "Poste italiane S.p.A."
+  dividend: 0.42
+"PRY.MI":
+  name: "Prysmian S.p.A."
+  dividend: 0.43
+"REC.MI":
+  name: "Recordati S.p.A."
+  dividend: 0.85
+"SPM.MI":
+  name: "Saipem S.p.A."
+  dividend: 0
+"SFER.MI":
+  name: "Salvatore Ferragamo S.p.A."
+  dividend: 0.38
+"SRG.MI":
+  name: "Snam S.p.A."
+  dividend: 02155
+"STM.MI":
+  name: "STMicroelectronics N.V."
+  dividend: 0.196
+"TIT.MI":
+  name: "Telecom Italia S.p.A."
+  dividend: 0
+"TEN.MI":
+  name: "Tenaris S.A."
+  dividend: 0.327
+"TRN.MI":
+  name: "Terna - Rete Elettrica Nazionale S.p.A."
+  dividend: 0.22
+"UBI.MI":
+  name: "UBI Banca S.p.A."
+  dividend: 0.11
+"UCG.MI":
+  name: "UniCredit S.p.A.[12]"
+  dividend: 0.32
+"UNI.MI":
+  name: "Unipol S.p.A."
+  dividend: 0.18
+"US.MI":
+  name: "UnipolSai Assicurazioni S.p.A."
+  dividend: 0.145
+"YNAP.MI":
+  name: "Yoox Net-A-Porter Group SpA"
+  dividend: 0
