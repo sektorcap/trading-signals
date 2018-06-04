@@ -3,12 +3,12 @@
 <table>
   <thead>
     <tr>
-      <th>Simbolo</th>
       <th>Nome</th>
       <th>Data chiusura</th>
       <th>Chiusura</th>
-      <th>Min anno</th>
-      <th>Max anno</th>
+      <th>Min-Max anno</th>
+      <th>Dividendo</th>
+      <th>Rendimento netto</th>
       <th>Segnali</th>
       <th>Note</th>
     </tr>
@@ -16,12 +16,13 @@
 
   <% @signals.each do |s| %>
     <tbody>
-      <%= content_tag :td, s[:symbol] %>
-      <%= content_tag :td, s[:name] %>
+      <%= content_tag :td, s[:name], class: "strong" %>
       <%= content_tag :td, s[:last_time] %>
       <%= content_tag :td, s[:last_close] %>
-      <%= content_tag :td, s[:min_close] %>
-      <%= content_tag :td, s[:max_close] %>
+      <%= content_tag :td, "#{s[:min_close][1]}-#{s[:max_close][1]}" %>
+      <%= content_tag :td, s[:dividend] %>
+      <%= content_tag :td, sprintf("%.2f%", s[:dividend].to_f/s[:last_close].to_f*74) %>
+
 
       <%= content_tag :td do %>
         <% s[:signals].each do |m| %>

@@ -22,7 +22,7 @@ trap_kill
 
 options = OptionParser.parse(ARGV)
 
-# begin
+begin
   options.stocks_files.each do |f|
     logger.info "Analyzing #{f}..."
     ret = analyze f
@@ -30,11 +30,11 @@ options = OptionParser.parse(ARGV)
     Mailer.daily_email(ret.select{|x| x[:is_signaled]}).deliver_now
     #SendMail.send_mail SendMail.build_signals_body(ret)
   end
-# rescue Exception => e
-#    logger.error e.inspect
-#    body  = "Exception\n"
-#    body += e.inspect
-#    SendMail.send_mail body
-# end
+rescue Exception => e
+   logger.error e.inspect
+   body  = "Exception\n"
+   body += e.inspect
+   SendMail.send_mail body
+end
 
 logger.info 'Finish'

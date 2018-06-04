@@ -11,12 +11,14 @@ module StocksAnalizer
     ret = []
     stocks.each do |symbol, data|
       timeseries = daily_stock symbol
+      # this is a fix because sometimes Alphavantage returns some data set to 0
+      close = timeseries.close.select{|i| i[1].to_f > 0}
 
-      s1, options1 = signal_5_down timeseries.close[0..4]
-      s2, options2 = one_year_min timeseries.close
-      s3, options3 = one_year_max timeseries.close
+      s1, options1 = signal_5_down close[0..4]
+      s2, options2 = one_year_min close
+      s3, options3 = one_year_max close
 
-      logger.info "#{data["name"]} (#{symbol}): #{timeseries.close[0]}"
+      logger.info "#{data["name"]} (#{symbol}): #{close[0]}"
       logger.info "  - #{options1[:message]}" if s1
       logger.info "  - #{options2[:message]}" if s2
       logger.info "  - #{options3[:message]}" if s3
@@ -24,10 +26,11 @@ module StocksAnalizer
       ret << {
         symbol: symbol,
         name: data["name"],
-        last_time: timeseries.close[0][0],
-        last_close: timeseries.close[0][1],
-        min_close: min_close(timeseries.close),
-        max_close: max_close(timeseries.close),
+        last_time: close[0][0],
+        last_close: close[0][1],
+        min_close: min_close(close),
+        max_close: max_close(close),
+        dividend: data["dividend"],
         is_signaled: s1 | s2 | s3,
         signals: [
           (options1 if s1),
