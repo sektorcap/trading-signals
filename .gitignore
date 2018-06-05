@@ -1,3 +1,4 @@
 log/*.log
 env
+.env
 heroku_env

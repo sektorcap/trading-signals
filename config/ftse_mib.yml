@@ -6,7 +6,7 @@
   dividend: 1.22
 "AZM.MI":
   name: "Azimut Holding S.p.A."
-  dividend: 2
+  dividend: 1
 "BGN.MI":
   name: "Banca Generali S.p.A."
   dividend: 1.25
@@ -110,7 +110,7 @@
   name: "UBI Banca S.p.A."
   dividend: 0.11
 "UCG.MI":
-  name: "UniCredit S.p.A.[12]"
+  name: "UniCredit S.p.A."
   dividend: 0.32
 "UNI.MI":
   name: "Unipol S.p.A."

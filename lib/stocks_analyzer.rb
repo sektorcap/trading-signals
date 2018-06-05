@@ -54,17 +54,20 @@ module StocksAnalizer
     (0..3).each {|x| return false, options if ts[x][1] >= ts[x+1][1]}
     options[:message] = "Sceso 5 volte di fila (#{ts[0..4].map{|x| x[1]}.join(", ")})"
     options[:action] = "compra"
+    options[:class] = "yellow"
     return true, options
   end
 
-  PERCENTAGE_MIN_THRESHOLD = 0.95
+  PERCENTAGE_MIN_THRESHOLD_1 = 0.95
+  PERCENTAGE_MIN_THRESHOLD_2 = 0.99
   def one_year_min ts
     options = {}
     min_entry = ts[0..280].min{|x,y| x[1].to_f <=> y[1].to_f}
     options[:min_entry] = min_entry
-    if (ts[0][1].to_f*PERCENTAGE_MIN_THRESHOLD <= min_entry[1].to_f)
+    if (ts[0][1].to_f*PERCENTAGE_MIN_THRESHOLD_1 <= min_entry[1].to_f)
       options[:message] = "Nei pressi del minimo dell'ultimo anno (#{min_entry})"
       options[:action] = "compra"
+      options[:class] = ts[0][1].to_f*PERCENTAGE_MIN_THRESHOLD_2 <= min_entry[1].to_f ? "green" : "orange"
       return true, options
     else
       return false, options
@@ -79,6 +82,7 @@ module StocksAnalizer
     if (ts[0][1].to_f >= max_entry[1].to_f*PERCENTAGE_MAX_THRESHOLD)
       options[:message] = "Nei pressi del massimo dell'ultimo anno (#{max_entry})"
       options[:action] = "vendi"
+      options[:class] = "red"
       return true, options
     else
       return false, options
