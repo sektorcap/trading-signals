@@ -4,8 +4,8 @@ log:
 
 alphavantage:
   verbose: true
-  waiting_time: 5
-  retry: 10
+  waiting_time: 10
+  retry: 20
 
 stocks:
   FTSE_MIB: ftse_mib.yml
